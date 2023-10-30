@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div class="slideshow">
+      <img class="slide" src="slide1.gif" />
+      <img class="slide" src="slide2.gif" />
+      <img class="slide" src="slide3.gif" />
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      let currentSlide = 0;
+
+      function showSlide(slideIndex) {
+        slides[currentSlide].style.display = "none";
+        slides[slideIndex].style.display = "block";
+        currentSlide = slideIndex;
+      }
+
+      function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        // GIF 초기화
+        slides[currentSlide].src = slides[currentSlide].src;
+        showSlide(nextIndex);
+      }
+
+      // 초기 슬라이드 표시
+      showSlide(currentSlide);
+
+      // 슬라이드 쇼 시작
+      setInterval(nextSlide, 3000);
+    </script>
+  </body>
+</html>
